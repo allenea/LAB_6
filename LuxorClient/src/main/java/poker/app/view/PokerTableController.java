@@ -86,6 +86,9 @@ public class PokerTableController {
 	private TextArea txtPlayerArea;
 
 	@FXML
+	public Button btnDrawClick;
+	
+	@FXML
 	private Button btnStartGame;
 	@FXML
 	private ToggleButton btnPos1SitLeave;
@@ -292,6 +295,13 @@ public class PokerTableController {
 	}
 
 	@FXML
+	void btnDraw_Click(ActionEvent event) {
+		Action act = new Action(eAction.Draw, mainApp.getPlayer());
+		mainApp.messageSend(act);
+	}
+	
+	
+	@FXML
 	void btnStart_Click(ActionEvent event) {
 		Action act = new Action(eAction.StartGame, mainApp.getPlayer());
 		int iRuleNbr = Integer.parseInt(mainApp.getRuleName().replace("PokerGame", ""));
@@ -306,7 +316,7 @@ public class PokerTableController {
 
 		mainApp.messageSend(act);
 	}
-
+	
 	@FXML
 	void btnDeal_Click(ActionEvent event) {
 		Action act = new Action(eAction.Deal, mainApp.getPlayer());
